@@ -17,7 +17,7 @@ for package in ${packages[*]}; do
     ${INSTALL} $package
 done
 
-python_packages=(numpy pandas nltk gensim scipy stemming ipython "ipython[notebook]" protobuf requests nose scikit-learn scikit-image mock re2)
+python_packages=(numpy pandas nltk gensim scipy stemming ipython "ipython[notebook]" protobuf requests nose scikit-learn scikit-image mock re2 jinjia2 jsonschema functools32)
 for package in ${python_packages[*]}; do
     sudo pip install ${package}
 done
