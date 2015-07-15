@@ -1,0 +1,2 @@
+shell -bash
+escape ^Bb # Instead of Control-a, make the escape/command character be Control-b
