@@ -1,6 +1,6 @@
 #!/bin/bash
 
-
+packages=(liblas python ruby scalar emacs boost leveldb gflags opencv hdf5 gcc glob protobuf git curl openssl gradle snappy ag lmdb re2)
 if [[ "${OSTYPE}" =~ "darwin"* ]];
 then
     # ---  OSX ---- #
@@ -9,10 +9,9 @@ then
     INSTALL="sudo brew install"
     brew tap homebrew/science
 else
-    INSTALL="sudo apt-get"
+    INSTALL="sudo apt-get install"
+    packages+=(gfortran libopenblas-dev liblapack-dev)
 fi
-
-packages=(liblas python ruby scalar emacs boost leveldb gflags opencv hdf5 gcc glob protobuf git curl openssl gradle snappy ag lmdb re2)
 
 for package in ${packages[*]}; do
     ${INSTALL} $package
