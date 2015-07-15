@@ -9,7 +9,7 @@ then
     INSTALL="sudo brew install"
     brew tap homebrew/science
 else
-    INSTALL="sudo apt-get install"
+    INSTALL="sudo apt-get install -y"
     packages+=(gfortran libopenblas-dev liblapack-dev)
 fi
 
