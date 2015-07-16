@@ -12,18 +12,15 @@ else
     INSTALL="sudo apt-get install -y"
     sudo add-apt-repository ppa:cassou/emacs
     sudo apt-get update
-    sudo apt-get builddep matplotlib
-    sudo apt-get builddep numpy
-    sudo apt-get builddep scipy
-    sudo apt-get builddep pandas
-    packages+=(gfortran libopenblas-dev liblapack-dev)
+    sudo easy_install -U distribute
+    packages+=(gfortran libopenblas-dev liblapack-dev libpng-dev libfreetype6-dev)
 fi
 
 for package in ${packages[*]}; do
     ${INSTALL} $package
 done
 
-python_packages=(numpy pandas nltk gensim scipy stemming ipython==3.2.1 "ipython[notebook]" protobuf requests nose scikit-learn scikit-image mock re2 jinjia2 jsonschema functools32 pyzmq)
+python_packages=(numpy pandas nltk gensim scipy stemming ipython==3.2.1 "ipython[notebook]" protobuf requests nose scikit-learn scikit-image mock re2 jinja2 jsonschema functools32 pyzmq tornado matplotlib)
 for package in ${python_packages[*]}; do
     sudo pip install ${package}
 done
