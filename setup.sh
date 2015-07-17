@@ -20,7 +20,5 @@ for package in ${packages[*]}; do
     ${INSTALL} $package
 done
 
+pip install -r python/requirements.txt
 python_packages=(numpy pandas nltk gensim scipy stemming ipython==3.2.1 "ipython[notebook]" protobuf requests nose scikit-learn scikit-image mock re2 jinja2 jsonschema functools32 pyzmq tornado matplotlib)
-for package in ${python_packages[*]}; do
-    sudo pip install ${package}
-done
