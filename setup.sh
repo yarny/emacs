@@ -1,4 +1,4 @@
-B0;95;c#!/bin/bash
+#!/bin/bash
 
 if [[ "${OSTYPE}" =~ "darwin"* ]];
 then
@@ -19,7 +19,7 @@ else
     sudo easy_install -U distribute
 
     # -- emacs24 --- #
-    sudo add-apt-repository ppa:cassou/emacs
+    sudo add-apt-repository -y ppa:cassou/emacs
     sudo apt-get install -y emacs24 emacs24-el emacs24-common-non-dfsg
 fi
 
