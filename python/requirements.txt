@@ -4,8 +4,7 @@ nltk
 gensim 
 scipy 
 stemming 
-ipython==3.2.1 
-"ipython[notebook]" 
+ipython[all]==3.2.1
 protobuf 
 requests 
 nose 
