@@ -24,9 +24,11 @@ else
 
     # -- emacs24 --- #
     sudo add-apt-repository -y ppa:cassou/emacs
+    sudo apt-get update
     sudo apt-get install -y emacs24 emacs24-el emacs24-common-non-dfsg
 fi
 
+exit
 # --- Python --- #
 for package in $(cat python/requirements.txt)
 do
