@@ -1,4 +1,4 @@
-#!/bin/bash
+B0;95;c#!/bin/bash
 
 if [[ "${OSTYPE}" =~ "darwin"* ]];
 then
@@ -6,13 +6,25 @@ then
     # ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     # sudo chown root /usr/local/bin/brew
     brew tap homebrew/science
-    cat osx/requirements.txt | xargs sudo brew install
+    for package in $(cat osx/requirements.txt)
+    do
+	sudo brew install $package
+    done
 else
     # --- Ubuntu -- #
-    sudo add-apt-repository ppa:cassou/emacs
-    cat ubuntu/requirements.txt | xargs sudo aptitude install -y
+    for package in $(cat ubuntu/requirements.txt)
+    do
+	sudo apt-get install -y $package
+    done
     sudo easy_install -U distribute
+
+    # -- emacs24 --- #
+    sudo add-apt-repository ppa:cassou/emacs
+    sudo apt-get install -y emacs24 emacs24-el emacs24-common-non-dfsg
 fi
 
 # --- Python --- #
-pip install -r python/requirements.txt
+for package in $(cat python/requirements.txt)
+do
+    sudo pip install $package
+done

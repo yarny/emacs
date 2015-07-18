@@ -3,9 +3,6 @@ python-pip
 ruby
 scalar
 emacs
-emacs24
-emacs24-el
-emacs24-common-non-dfsg
 boost
 leveldb
 gflags
