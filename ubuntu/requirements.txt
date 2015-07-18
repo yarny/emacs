@@ -1,3 +1,4 @@
+cmake
 python
 python-pip
 ruby
