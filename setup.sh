@@ -1,5 +1,9 @@
 #!/bin/bash
 
+cp .screenrc ~
+mkdir -p ~/.emacs.d
+cp init.el ~/.emacs.d
+
 if [[ "${OSTYPE}" =~ "darwin"* ]];
 then
     # ---  OSX ---- #
