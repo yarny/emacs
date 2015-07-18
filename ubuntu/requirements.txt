@@ -7,7 +7,8 @@ curl
 snappy
 silversearcher-ag
 liblas
-gfortran 
+gfortran
+protobuf-compiler
 libboost-all-dev
 libopenblas-dev 
 liblapack-dev 
