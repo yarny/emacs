@@ -7,7 +7,6 @@ emacs
 curl
 snappy
 silversearcher-ag
-liblas
 gfortran
 protobuf-compiler
 libboost-all-dev
@@ -23,3 +22,5 @@ libleveldb-dev
 libsnappy-dev
 libopencv-dev 
 libhdf5-serial-dev
+libblas-dev
+libatlas-base-dev
