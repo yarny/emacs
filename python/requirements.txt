@@ -18,3 +18,4 @@ functools32
 pyzmq 
 tornado 
 matplotlib
+pyhive
