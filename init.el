@@ -69,6 +69,7 @@
 			    (setq c-basic-offset 2
 				  tab-width 2
 				  indent-tabs-mode t)))
+(setq tab-width 2)
 
 ;; Goto line.
 (global-set-key "\C-xg" `goto-line)
@@ -77,7 +78,8 @@
 (unless (package-installed-p 'helm-ag)
   (package-refresh-contents) (package-install 'helm-ag))
 (require 'helm-ag)
-(global-set-key "\M-s" `helm-projectile-ag)
+(global-set-key "\M-s" `projectile-ag)
+(global-set-key "\M-r" `helm-projectile-ag)
 
 ;; auto-complete
 (unless (package-installed-p 'auto-complete)
