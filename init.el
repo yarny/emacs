@@ -9,6 +9,9 @@
 (setq line-number-mode t)
 (setq column-number-mode t)
 
+;; Tab as spaces.
+(setq-default indent-tabs-mode nil)
+
 ;; Scala and thrift support
 (require 'package)
 (add-to-list 'package-archives
@@ -16,6 +19,11 @@
 (package-initialize)
 (unless (package-installed-p 'scala-mode2)
   (package-refresh-contents) (package-install 'scala-mode2))
+(custom-set-variables
+ '(scala-indent:align-forms t)
+ '(scala-indent:align-parameters t))
+
+
 (unless (package-installed-p 'thrift)
   (package-refresh-contents) (package-install 'thrift))
 
@@ -47,6 +55,7 @@
 (ws-butler-global-mode)
 (add-hook 'prog-mode-hook 'ws-butler-mode)
 
+
 ;; Projectile
 (unless (package-installed-p 'projectile)
   (package-refresh-contents) (package-install 'projectile))
@@ -63,13 +72,6 @@
 ;; Robe. Ruby programming.
 (unless (package-installed-p 'robe)
   (package-refresh-contents) (package-install 'robe))
-
-;; Two space tab for Java mode.
-(add-hook 'java-mode-hook (lambda ()
-			    (setq c-basic-offset 2
-				  tab-width 2
-				  indent-tabs-mode t)))
-(setq tab-width 2)
 
 ;; Goto line.
 (global-set-key "\C-xg" `goto-line)
@@ -105,3 +107,10 @@
       `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms
             `((".*" ,temporary-file-directory t)))
+
+;; Google-c-style
+(unless (package-installed-p 'google-c-style)
+  (package-refresh-contents) (package-install 'google-c-style))
+(add-hook 'c-mode-common-hook 'google-set-c-style)
+(add-hook 'c-mode-common-hook 'google-make-newline-indent)
+
