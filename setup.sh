@@ -3,6 +3,7 @@
 
 function CopyProfileFiles() {
     cp .screenrc ~
+    cp .bazelrc ~
     mkdir -p ~/.emacs.d
     cp init.el ~/.emacs.d
 }
@@ -25,42 +26,11 @@ function SystemType() {
     fi
 }
 
-function InstallGlog()  {
-    WORK_DIR=$PWD
-    wget https://google-glog.googlecode.com/files/glog-0.3.3.tar.gz
-    tar zxvf glog-0.3.3.tar.gz
-    cd glog-0.3.3
-    ./configure
-    make && sudo make install
-    cd $WORK_DIR
-}
-
-function InstallGflags() {
-    WORK_DIR=$PWD
-    wget https://github.com/schuhschuh/gflags/archive/master.zip
-    unzip -o master.zip
-    cd gflags-master
-    mkdir build && cd build
-    export CXXFLAGS="-fPIC" && cmake .. && make VERBOSE=1
-    make && sudo make install
-    cd $WORK_DIR
-}
-
-function InstallCMake() {
-    WORK_DIR=$PWD
-    wget http://www.cmake.org/files/v2.8/cmake-2.8.12.tar.gz
-    tar zxvf cmake-2.8.12.tar.gz
-    cd cmake-2.8.12
-    ./bootstrap; make; sudo make install
-    cd $WORK_DIR
-}
-
-function InstallLmdb() {
-    WORK_DIR=$PWD
-    git clone https://github.com/LMDB/lmdb.git
-    cd lmdb/libraries/liblmdb
-    make && sudo make install
-    cd $WORK_DIR
+function GitAliases() {
+    git config --global alias.co checkout
+    git config --global alias.br branch
+    git config --global alias.ci commit
+    git config --global alias.st status
 }
 
 if [[ ! -e ~/.emacs.d/init.el ]];
@@ -85,27 +55,21 @@ then
     done
 elif [[ $SYSTEM_TYPE =~ "Ubuntu" ]];
 then
-    if [[ $SYSTEM_TYPE =~ "12" ]];
-    then
-	InstallCMake
-	InstallGlog
-	InstallGflags
-	InstallLmdb
-    fi
-
+    sudo apt-get install -y software-properties-common
+    sudo add-apt-repository -y ppa:george-edison55/cmake-3.x
+    sudo apt-get update
     for package in $(cat ubuntu/requirements.txt)
     do
 	sudo apt-get install -y $package
     done
     sudo easy_install -U distribute
 
-    # -- emacs24 --- #
-    sudo add-apt-repository -y ppa:cassou/emacs
-    sudo apt-get update
-    sudo apt-get install -y emacs24 emacs24-el emacs24-common-non-dfsg
+    ./ubuntu/setup.sh
 else
     echo "Unknown System type"
 fi
+
+GitAliases
 
 # --- Python --- #
 for package in $(cat python/requirements.txt)

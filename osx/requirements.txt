@@ -1,19 +1,16 @@
 python
 python-pip
 ruby
-scalar
+scala
 emacs
 emacs24
 emacs24-el
 emacs24-common-non-dfsg
 boost
 leveldb
-gflags
 opencv
 hdf5
 gcc
-glob
-protobuf
 git
 curl
 openssl
@@ -24,3 +21,4 @@ lmdb
 re2
 liblas
 rsync
+wget
